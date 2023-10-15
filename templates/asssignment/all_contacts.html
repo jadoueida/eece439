@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .contact {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.2s;
+        }
+        .contact:hover {
+            background-color: #f9f9f9;
+        }
+        .contact img {
+            max-width: 100px;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+        .contact-details {
+            flex: 1;
+        }
+        .delete-button {
+            margin-top: 10px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .view-button {
+            margin-top: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .update-button {
+            margin-top: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .add-button {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact List</h1>
+        {% for contact in contacts %}
+        <div class="contact">
+            {% if contact.picture %}
+            <img src="{{ contact.picture.url }}" alt="{{ contact.first_name }}'s Profile Picture">
+            {% else %}
+            <img src="{% static 'placeholder.png' %}" alt="Placeholder">
+            {% endif %}
+            <div class="contact-details">
+                <strong>{{ contact.first_name }} {{ contact.last_name }}</strong><br>
+                Address: {{ contact.address }}<br>
+                Profession: {{ contact.profession }}<br>
+                Telephone: {{ contact.telephone }}<br>
+                Email: {{ contact.email }}<br>
+                <button class="delete-button" onclick="window.location.href='/deletecontact/{{ contact.id }}'">Delete</button>
+                <button class="view-button" onclick="window.location.href='/contact/{{ contact.id }}'">View</button>
+                <button class="update-button" onclick="window.location.href='/updatecontact/{{ contact.id }}'">Update</button>
+            </div>
+        </div>
+        {% endfor %}
+        <a class="add-button" href="{% url 'add-contact' %}">Add Contact</a>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

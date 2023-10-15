@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .contact-details {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-details strong {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .contact-details p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .contact-details img {
+            max-width: 100px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Details</h1>
+        <div class="contact-details">
+            <strong>{{ contact.first_name }} {{ contact.last_name }}</strong><br>
+            <p><strong>Address:</strong> {{ contact.address }}</p>
+            <p><strong>Profession:</strong> {{ contact.profession }}</p>
+            <p><strong>Telephone:</strong> {{ contact.telephone }}</p>
+            <p><strong>Email:</strong> {{ contact.email }}</p>
+            {% if contact.picture %}
+            <img src="{{ contact.picture.url }}" alt="{{ contact.first_name }}'s Profile Picture">
+            {% endif %}
+        </div>
+        <a class="back-button" href="/">Back to Contact List</a>
+    </div>
+</body>
+</html>
+

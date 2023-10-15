@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Contact</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .confirmation-message {
+            padding: 20px;
+        }
+        .confirmation-message strong {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .confirmation-message p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .delete-button {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Contact</h1>
+        <div class="confirmation-message">
+            <p>Are you sure you want to delete the contact?</p>
+            <strong>{{ contact.first_name }} {{ contact.last_name }}</strong><br>
+            <p>Email: {{ contact.email }}</p>
+            <form method="post">
+                {% csrf_token %}
+                <button class="delete-button" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
